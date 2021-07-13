@@ -1,0 +1,71 @@
+<div class="content1">
+    
+  <div class="container">
+
+    <form (ngSubmit)="onSubmit()" #ChessBoard="ngForm" class="form-group" style="width: 300px; padding-top: 50px; padding-left: 50px;" >
+        
+      <a style="color: white"  target="_blank">
+        <h4>{{step}}</h4>
+        <h3>{{player}} &nbsp;<img src="assets/img/arrow.gif"></h3>
+      </a>
+
+      <label for verX>Enter vertical x position:</label>
+      <input #spy #verX="ngModel" required type="text" [(ngModel)]="piece.verX" class="form-control" name="verX" id="verX" 
+      placeholder="From: 0 to 7" [disabled]="validInsert">
+
+      <label for horY>Enter horizontal y position:</label>
+      <input #spy #horY="ngModel" required type="text" [(ngModel)]="piece.horY" class="form-control" name="horY" id="horY" 
+      placeholder="From: 0 to 7" [disabled]="validInsert">
+
+      <label for type>Enter type of the piece:</label>
+      <input #spy #type="ngModel" required type="text" [(ngModel)]="piece.type" class="form-control" name="type" id="type" 
+      placeholder="From: 'pawn', 'rook', 'king'" [disabled]="validInsert">
+      
+      <br>
+      <a>
+      <button type="button" class="btn btn-warning" (click)="cleanButtonClicked()">Clear</button>
+        &nbsp;
+      <!-- <button type="submit" class="btn btn-success" ng-click="submit" [disabled]="!ChessBoard.form.valid">Insert</button>
+        &nbsp; -->
+      <button type="submit" class="btn btn-success" ng-click="submit" [disabled]="validInsert">Insert</button>
+        &nbsp;
+      <br>
+      <br>
+      <button type="button" class="btn btn-danger" (click)="getNewBoardArr()" routerLink="/moving-pieces" routerLinkActive="active" 
+      [disabled]="isDisabled">Next step - moving pieces</button>
+      </a>
+      
+    </form>
+  </div>   
+
+
+  <table style="width:80%">
+
+    <tr *ngFor="let piece of boardArr">
+      <th><img src="assets/img/{{ piece.i0 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i1 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i2 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i3 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i4 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i5 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i6 }}.gif"></th>
+      <th><img src="assets/img/{{ piece.i7 }}.gif"></th>
+    </tr>
+
+    <!-- <tr *ngFor="let piece of piecesId; let i = index" [attr.data-index]="i">
+      <td><img src="assets/img/{{ piece[0] }}"></td>
+      <td><img src="assets/img/{{ piece[1] }}"></td>
+      <td><img src="assets/img/{{ piece[2] }}"></td>
+      <td><img src="assets/img/{{ piece[3] }}"></td>
+      <td><img src="assets/img/{{ piece[4] }}"></td>
+      <td><img src="assets/img/{{ piece[5] }}"></td>
+      <td><img src="assets/img/{{ piece[6] }}"></td>
+      <td><img src="assets/img/{{ piece[7] }}"></td>
+    </tr> -->
+    
+  </table>
+
+
+</div>
+
+

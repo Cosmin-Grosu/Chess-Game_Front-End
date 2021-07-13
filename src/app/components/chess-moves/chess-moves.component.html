@@ -1,0 +1,52 @@
+<div class="content1">
+    
+    <div class="container">
+  
+      <form (ngSubmit)="onSubmit()" #ChessMoves="ngForm" class="form-group" style="width: 300px; padding-top: 50px; padding-left: 50px;" >
+          
+        <a style="color: white"  target="_blank">
+          <h4>{{step}}</h4>
+          <h3>{{player}}</h3>
+        </a>
+        <label for startX>Enter start x position:</label>
+        <input #spy #startX="ngModel" required type="text" [(ngModel)]="piece.startX" class="form-control" name="startX" id="startX" 
+        placeholder="From: 0 to 7" [disabled]="validInsert">
+        <label for startY>Enter start y position:</label>
+        <input #spy #startY="ngModel" required type="text" [(ngModel)]="piece.startY" class="form-control" name="startY" id="startY" 
+        placeholder="From: 0 to 7" [disabled]="validInsert">
+        <label for endX>Enter end x position:</label>
+        <input #spy #endX="ngModel" required type="text" [(ngModel)]="piece.endX" class="form-control" name="endX" id="endX" 
+        placeholder="From: 0 to 7" [disabled]="validInsert">
+        <label for endY>Enter end y position:</label>
+        <input #spy #endY="ngModel" required type="text" [(ngModel)]="piece.endY" class="form-control" name="endY" id="endY" 
+        placeholder="From: 0 to 7" [disabled]="validInsert">
+        <br>
+        <a>
+        <button type="button" class="btn btn-warning" (click)="cleanButtonClicked()">Clear</button>
+          &nbsp;
+        <button type="submit" class="btn btn-success" ng-click="submit" [disabled]="validInsert">Move</button>
+          &nbsp;
+        </a>
+        
+      </form>
+    </div>   
+  
+  
+    <table style="width:80%">
+      <tr *ngFor="let piece of boardArr">
+        <th><img src="assets/img/{{ piece.i0 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i1 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i2 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i3 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i4 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i5 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i6 }}.gif"></th>
+        <th><img src="assets/img/{{ piece.i7 }}.gif"></th>
+      </tr>
+    </table>
+  
+  
+  </div>
+  
+  
+  
